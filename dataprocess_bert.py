@@ -2,7 +2,6 @@ import tensorflow as tf
 import os
 from data.bert_prepro import process_data
 from utils import batchnize_dataset
-from models.punct_cnn_self_attention_models import SequenceLabelModel
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 # dataset parameters
