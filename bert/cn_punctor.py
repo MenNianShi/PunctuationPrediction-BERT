@@ -35,34 +35,34 @@ FLAGS = flags.FLAGS
 
 ## Required parameters
 flags.DEFINE_string(
-    "data_dir", '/data/dh/neural_sequence_labeling-master/data/dataset/lrec/',
+    "data_dir", '/data/neural_sequence_labeling-master/data/dataset/lrec/',
     "The input data dir. Should contain the json files (or other data files) "
     "for the task.")
-flags.DEFINE_string('data_config_path', '/data/dh/neural_sequence_labeling-master/bert/outputdata_pd.conf',
+flags.DEFINE_string('data_config_path', '/data/neural_sequence_labeling-master/bert/outputdata_pd.conf',
                     'data config file, which save train and dev config')
 flags.DEFINE_string(
-    "test_data_dir", '/data/dh/neural_sequence_labeling-master/data/raw/LREC_converted/',
+    "test_data_dir", '/data/neural_sequence_labeling-master/data/raw/LREC_converted/',
     "The input data dir. Should contain the .txt files (or other data files) "
     "for the task.")
 
 flags.DEFINE_string(
-    "bert_config_file", '/data/dh/neural_sequence_labeling-master/chinese_L-12_H-768_A-12/bert_config.json',
+    "bert_config_file", '/data/neural_sequence_labeling-master/chinese_L-12_H-768_A-12/bert_config.json',
     "The config json file corresponding to the pre-trained BERT model. "
     "This specifies the model architecture.")
 
 flags.DEFINE_string("task_name",'Punctor' , "The name of the task to train.")
 
-flags.DEFINE_string("vocab_file", '/data/dh/neural_sequence_labeling-master/chinese_L-12_H-768_A-12/vocab.txt',
+flags.DEFINE_string("vocab_file", '/data/neural_sequence_labeling-master/chinese_L-12_H-768_A-12/vocab.txt',
                     "The vocabulary file that the BERT model was trained on.")
 
 flags.DEFINE_string(
-    "output_dir", '/data/dh/neural_sequence_labeling-master/bert/output_pd',
+    "output_dir", '/data/neural_sequence_labeling-master/bert/output_pd',
     "The output directory where the model checkpoints will be written.")
 
 ## Other parameters
 ''
 flags.DEFINE_string(
-    "init_checkpoint", '/data/dh/neural_sequence_labeling-master/chinese_L-12_H-768_A-12/bert_model.ckpt',
+    "init_checkpoint", '/data/neural_sequence_labeling-master/chinese_L-12_H-768_A-12/bert_model.ckpt',
     "Initial checkpoint (usually from a pre-trained BERT model).")
 
 flags.DEFINE_bool(
@@ -212,7 +212,7 @@ class PunctorProcessor(DataProcessor):
         )
     def get_test_examples(self,data_dir):
 
-        input_file ='/data/dh/neural_sequence_labeling-master/data/raw/LREC/2014_test.txt'
+        input_file ='/data/neural_sequence_labeling-master/data/raw/LREC/2014_test.txt'
         index = 0
         lines = []
 
@@ -1129,8 +1129,8 @@ def main():
 
         with codecs.open(output_predict_file, 'w', encoding='utf-8') as writer:
             result_to_pair(writer)
-        target_path =  '/data/dh/neural_sequence_labeling-master/data/raw/LREC/2014_test.txt'
-        predict_path = '/data/dh/neural_sequence_labeling-master/bert/output_pd/label_test_pd.txt'
+        target_path =  '/data/neural_sequence_labeling-master/data/raw/LREC/2014_test.txt'
+        predict_path = '/data/neural_sequence_labeling-master/bert/output_pd/label_test_pd.txt'
         out_str, f1, err, ser = compute_score(target_path,predict_path)
         tf.logging.info("\nEvaluate on {}:\n{}\n".format('asr', out_str))
 
@@ -1210,8 +1210,8 @@ def compute_score(target_path, predicted_path):
 if __name__ == "__main__":
 
     # out_str, f1, err, ser = compute_score(
-    #     '/data/dh/neural_sequence_labeling-master/data/raw/LREC_converted/ref.txt',
-    #     '/data/dh/neural_sequence_labeling-master/bert/output/label_test.txt')
+    #     '/data/neural_sequence_labeling-master/data/raw/LREC_converted/ref.txt',
+    #     '/data/neural_sequence_labeling-master/bert/output/label_test.txt')
     #
     # score = {"F1": f1, "ERR": err, "SER": ser}
     # print(out_str)
